@@ -2,9 +2,12 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-timeline-component@2.0.0/dist/aframe-animation-timeline-component.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene animation-timeline="speakerTimeline:#speakers1; loop:true">
+      
+
       <a-sky color="#87CEEB"></a-sky>
       <a-light
         type="directional"
@@ -21,17 +24,39 @@
       ></a-camera>
       <a-assets>
         <audio
+          id="walkintherain"
+          src="https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/10%20Walking%20In%20The%20Rain%20(feat.%20Nas%2C%20Exodus%20Simmons%20%26%20Denaun)%20-%20(SongsLover.com).mp3?v=1653647626984"
+          preload="auto"
+        ></audio>
+        <audio
           id="skyscrappers"
           src="https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/06%20Skyscrapers%20(feat.%20Bono)%20-%20(SongsLover.com).mp3?v=1653645730041"
           preload="auto"
         ></audio>
+        
+        <a-timeline id="speakerTimeline">
+        <a-timeline-animation
+          select="#speakers"
+          name="up"
+        ></a-timeline-animation>
+        <a-timeline-animation
+          select="#speakers"
+          name="down"
+        ></a-timeline-animation>
+      </a-timeline>
+        
       </a-assets>
 
-      <a-entity>
+      <!-- Player -->
+      <a-entity id="player" ...>
         <a-gltf-model
           src="https://cdn.glitch.global/8505dc04-f6f6-4475-b385-f61b734f2073/Alfred%20Hitchcock.glb?v=1653388310490"
           position="12.273 1.592 -2.915"
+          animation__movement="dur:easing:linear:5000;from:20 -.2 -14; to:-30 -.2 -14;loop:-1;property:position"
         ></a-gltf-model>
+      </a-entity>
+
+      <a-entity>
         <a-gltf-model src=""></a-gltf-model>
         <a-gltf-model
           src="https://cdn.glitch.global/8505dc04-f6f6-4475-b385-f61b734f2073/house%20interiors.glb?v=1653390303919"
@@ -44,13 +69,17 @@
         ></a-gltf-model>
 
         <a-gltf-model
+          id="speakers1"
           src="https://cdn.glitch.global/8505dc04-f6f6-4475-b385-f61b734f2073/Wall%20desk%20speakers.glb?v=1653468458260"
           position="9.269 -0.951 -4.835"
           rotation="0.00 190.00 0.00"
           scale="0.200 0.200 0.200"
+          animation__down="dur:2000;easing:easeInOutSine;from:-4.5;to:-4;loop:-1;property:object3D"
+          animation__up="dur:2000;easing:easeInOutSine;from:-4.5;to:-4;loop:-1;property:object3D"
         ></a-gltf-model>
 
         <a-gltf-model
+          class="speakers"
           src="https://cdn.glitch.global/8505dc04-f6f6-4475-b385-f61b734f2073/Wall%20desk%20speakers.glb?v=1653468458260"
           position="6.36128 -0.79241 -4.95557"
           rotation="0 190 0"
@@ -60,15 +89,24 @@
         ></a-gltf-model>
 
         <a-gltf-model
+          class="speakers"
           src="https://cdn.glitch.global/8505dc04-f6f6-4475-b385-f61b734f2073/Wall%20desk%20speakers.glb?v=1653468458260"
-          position="9.269 -0.951 -4.835"
-          rotation="0.00 190.00 0.00"
-          scale="0.200 0.200 0.200"
-          sound="src: url(#skyscrappers); autoplay: false"
+          position="-7.54121 -0.73008 -2.8936"
+          rotation="0 190 0"
+          scale="0.2 0.2 0.2"
+          gltf-model="https://cdn.glitch.global/8505dc04-f6f6-4475-b385-f61b734f2073/Wall%20desk%20speakers.glb?v=1653468458260"
+          sound="autoplay: false; src: https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/10%20Walking%20In%20The%20Rain%20(feat.%20Nas%2C%20Exodus%20Simmons%20%26%20Denaun)%20-%20(SongsLover.com).mp3?v=1653647626984"
+          sound__walkintherain=""
         ></a-gltf-model>
 
         <a-gltf-model
           src="https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/beach%20ball.glb?v=1653593854689"
+        ></a-gltf-model>
+        <a-gltf-model
+          src="https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/Boat.glb?v=1653728245517"
+          position="14.5530 -1.264 -0.615"
+          rotation="100.000 50.000 0.000"
+          scale="0.003 0.003 0.003"
         ></a-gltf-model>
       </a-entity>
 
