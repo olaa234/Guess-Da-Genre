@@ -2,10 +2,13 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+    <script src="cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-animation-timeline-component@2.0.0/dist/aframe-animation-timeline-component.min.js"></script>
   </head>
   <body>
-    <a-scene animation-timeline="speakerTimeline:#speakers1; loop:true">
+    <a-scene physics="gravity:-9.8">
       
 
       <a-sky color="#87CEEB"></a-sky>
@@ -45,10 +48,22 @@
         ></a-timeline-animation>
       </a-timeline>
         
+        
+        
       </a-assets>
 
+<a-entity gltf-model="src: https://cdn.glitch.global/8505dc04-f6f6-4475-b385-f61b734f2073/Alfred%20Hitchcock.glb?v=1653388310490" position="12.273 1.592 -2.915"
+          body="type: dynamic; mass: 5; shape: none;"
+          shape__main="shape: cylinder;
+                       height: 0.36;
+                       radiusTop: 0.24;
+                       radiusBottom: 0.24;"
+          shape__handle="shape: box;
+                         halfExtents: 0.15 0.18 0.04;
+                         offset: 0.4 0 0;">
+</a-entity>
       <!-- Player -->
-      <a-entity id="player" ...>
+      <a-entity id="player1" ...>
         <a-gltf-model
           src="https://cdn.glitch.global/8505dc04-f6f6-4475-b385-f61b734f2073/Alfred%20Hitchcock.glb?v=1653388310490"
           position="12.273 1.592 -2.915"
@@ -102,6 +117,14 @@
         <a-gltf-model
           src="https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/beach%20ball.glb?v=1653593854689"
         ></a-gltf-model>
+        
+        <a-entity id="modal">
+      
+        <a-gltf-modal class="modal" src="https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/Button.glb?v=1653981823631"></a-gltf-modal>
+         <a-gltf-modal class="modal" src="https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/Button.glb?v=1653981823631"></a-gltf-modal>
+         <a-gltf-modal class="modal" src="https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/Button.glb?v=1653981823631"></a-gltf-modal>
+        </a-entity>
+        
         <a-gltf-model
           src="https://cdn.glitch.global/3c808086-ef75-4a09-9d69-9298025bbc39/Boat.glb?v=1653728245517"
           position="14.5530 -1.264 -0.615"
